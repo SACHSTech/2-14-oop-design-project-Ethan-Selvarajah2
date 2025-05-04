@@ -18,10 +18,13 @@ public class Goalkeeper extends Player {
 
     public double getSaveAccuracy() {
         if (saves + goalsAllowed == 0) {
-            System.out.println("This goalkeeper has no saves or conceded goals.");
             return 0.0;
         } else {
-            return (double) saves / (saves + goalsAllowed);
+            return (double) saves / (saves + goalsAllowed) * 100.0;
         }
+    }
+
+    public String toString() {
+        return "Player: " + getName() + " (#" + getPlayerNumber() + ")\nPosition: " + getPosition() + " | Age: " + getAge() + " | Height: " + getHeight() + " | Weight: " + getWeight() + " lbs | Nationality: " + getNationality() + " | Appearances: " + getAppearances() + " | Substitutions: " + getSubstitutions() + " | Assists: " + getAssists() + " | Fouls Committed: " + getFoulsComitted() + " | Fouls Suffered: " + getFoulsSuffered() + " | Yellow Card Count: " + getYellowCard() + " | Red Card Count: " + getRedCard() + " | Saves: " + getSaves() + " | Goals Allowed: " + getGoalsAllowed() + " | Save Accuracy: " + getSaveAccuracy() + "%";
     }
 }

@@ -27,7 +27,17 @@ public abstract class Player extends Person {
     }
 
     public String getPosition() {
-        return position;
+        if (position.equals("G")) {
+            return "Goalkeeper";
+        } else if (position.equals("D")) {
+            return "Defender";
+        } else if (position.equals("M")) {
+            return "Midfielder";
+        } else if (position.equals("F")) {
+            return "Forward";
+        } else {
+            return "Other";
+        }
     }
 
     public int getAppearances() {

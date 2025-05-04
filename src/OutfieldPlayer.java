@@ -23,6 +23,15 @@ public class OutfieldPlayer extends Player {
     }
 
     public double getShotAccuracy() {
-        return (double) shotsOnTarget / totalShots;
+        if (totalShots == 0) {
+            return 0.0;
+        } else {
+            return (double) shotsOnTarget / totalShots * 100.0;
+        }
+        
+    }
+
+    public String toString() {
+        return "Player: " + getName() + " (#" + getPlayerNumber() + ")\nPosition: " + getPosition() + " | Age: " + getAge() + " | Height: " + getHeight() + " | Weight: " + getWeight() + " lbs | Nationality: " + getNationality() + " | Appearances: " + getAppearances() + " | Substitutions: " + getSubstitutions() + " | Assists: " + getAssists() + " | Fouls Committed: " + getFoulsComitted() + " | Fouls Suffered: " + getFoulsSuffered() + " | Yellow Card Count: " + getYellowCard() + " | Red Card Count: " + getRedCard() + " | Goals: " + getGoals() + " | Shots: " + getTotalShots() + " | Shots on Target: " + getShotsOnTarget() + " | Shot Accuracy: " + getShotAccuracy() + "%";
     }
 }

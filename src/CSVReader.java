@@ -8,7 +8,7 @@ public class CSVReader {
             String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] infoSplit = line.split(",");
-                OutfieldPlayer p = new OutfieldPlayer(infoSplit[0], Integer.parseInt(infoSplit[3]), infoSplit[4], Integer.parseInt(infoSplit[5]), infoSplit[6], Integer.parseInt(infoSplit[1]), infoSplit[2], Integer.parseInt(infoSplit[7]), Integer.parseInt(infoSplit[8]), Integer.parseInt(infoSplit[10]), Integer.parseInt(infoSplit[13]), Integer.parseInt(infoSplit[14]), Integer.parseInt(infoSplit[15]), Integer.parseInt(infoSplit[16]), Integer.parseInt(infoSplit[9]), Integer.parseInt(infoSplit[11]), Integer.parseInt(infoSplit[12]));
+                OutfieldPlayer p = new OutfieldPlayer(infoSplit[0], skipBlank(infoSplit[3]), infoSplit[4], skipBlank(infoSplit[5]), infoSplit[6], skipBlank(infoSplit[1]), infoSplit[2], skipBlank(infoSplit[7]), skipBlank(infoSplit[8]), skipBlank(infoSplit[10]), skipBlank(infoSplit[13]), skipBlank(infoSplit[14]), skipBlank(infoSplit[15]), skipBlank(infoSplit[16]), skipBlank(infoSplit[9]), skipBlank(infoSplit[11]), skipBlank(infoSplit[12]));
                 players.add(p);
             }
         }
@@ -21,10 +21,22 @@ public class CSVReader {
             String line = br.readLine();
             while((line = br.readLine()) != null) {
                 String[] infoSplit = line.split(",");
-                Goalkeeper g = new Goalkeeper(infoSplit[0], Integer.parseInt(infoSplit[3]), infoSplit[4], Integer.parseInt(infoSplit[5]), infoSplit[6], Integer.parseInt(infoSplit[1]), infoSplit[2], Integer.parseInt(infoSplit[7]), Integer.parseInt(infoSplit[8]), Integer.parseInt(infoSplit[11]), Integer.parseInt(infoSplit[12]), Integer.parseInt(infoSplit[13]), Integer.parseInt(infoSplit[14]), Integer.parseInt(infoSplit[15]), Integer.parseInt(infoSplit[9]), Integer.parseInt(infoSplit[10]));
+                Goalkeeper g = new Goalkeeper(infoSplit[0], skipBlank(infoSplit[3]), infoSplit[4], skipBlank(infoSplit[5]), infoSplit[6], skipBlank(infoSplit[1]), infoSplit[2], skipBlank(infoSplit[7]), skipBlank(infoSplit[8]), skipBlank(infoSplit[11]), skipBlank(infoSplit[12]), skipBlank(infoSplit[13]), skipBlank(infoSplit[14]), skipBlank(infoSplit[15]), skipBlank(infoSplit[9]), skipBlank(infoSplit[10]));
                 keepers.add(g);
             }
         }
         return keepers;
+    }
+
+    private static int skipBlank(String value) {
+        if (value.equals("---")) {
+            return 0;
+        }
+        
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }
