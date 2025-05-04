@@ -21,4 +21,8 @@ public class OutfieldPlayer extends Player {
     public int getShotsOnTarget() {
         return shotsOnTarget;
     }
+
+    public double getShotAccuracy() {
+        return (double) shotsOnTarget / totalShots;
+    }
 }

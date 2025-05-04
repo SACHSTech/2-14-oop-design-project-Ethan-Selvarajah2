@@ -15,4 +15,13 @@ public class Goalkeeper extends Player {
     public int getGoalsAllowed() {
         return goalsAllowed;
     }
+
+    public double getSaveAccuracy() {
+        if (saves + goalsAllowed == 0) {
+            System.out.println("This goalkeeper has no saves or conceded goals.");
+            return 0.0;
+        } else {
+            return (double) saves / (saves + goalsAllowed);
+        }
+    }
 }
