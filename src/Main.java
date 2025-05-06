@@ -56,10 +56,19 @@ public class Main {
                     System.out.println("Save Accuracy");
                     if (filterChoice.equals("Position")) {
                         String positionChoice = "";
+                        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+                        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+                        List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
+                        List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+
                         if (positionChoice.equals("Goalkeeper")) {
-
+                            for (int i = 0; i < goalkeepers.size(); i++) {
+                            Goalkeeper g = goalkeepers.get(i);
+                            System.out.println(g);
+                            System.out.println("");
+                        }
                         } else if (positionChoice.equals("Defender")) {
-
+                            
                         } else if (positionChoice.equals("Midfielder")) {
 
                         } else if (positionChoice.equals("Forward")) {
