@@ -7,9 +7,11 @@ public class Main {
 
         try {
             int userChoice = 0;
+
             while (userChoice != 5) {
                 System.out.println("FC BARCELONA STATISTICS");
                 System.out.println("1. Team Summary");
+                System.out.println("2. Sort");
                 System.out.println("5. Exit");
                 System.out.println("Enter your choice!:");
                 userChoice = Integer.parseInt(inputReader.readLine());
@@ -41,6 +43,67 @@ public class Main {
                         }
                     } catch (IOException e) {
                         System.out.println("Error.");
+                    }
+                } else if (userChoice == 2) {
+                    String filterChoice = "";
+                    System.out.println("Pick a filter to choose from:");
+                    System.out.println("Position");
+                    System.out.println("Nationality");
+                    System.out.println("Saves");
+                    System.out.println("Assists");
+                    System.out.println("Goals");
+                    System.out.println("Shot Accuracy");
+                    System.out.println("Save Accuracy");
+                    if (filterChoice.equals("Position")) {
+                        String positionChoice = "";
+                        if (positionChoice.equals("Goalkeeper")) {
+
+                        } else if (positionChoice.equals("Defender")) {
+
+                        } else if (positionChoice.equals("Midfielder")) {
+
+                        } else if (positionChoice.equals("Forward")) {
+
+                        } else {
+                            System.out.println("Please enter a valid position.");
+                        }
+                    } else if (filterChoice.equals("Nationality")) {
+                        String nationalityChoice = "";
+                        if (nationalityChoice.equals("Germany")) {
+
+                        } else if (nationalityChoice.equals("Spain")) {
+
+                        } else if (nationalityChoice.equals("Poland")) {
+
+                        } else if (nationalityChoice.equals("USA")) {
+
+                        } else if (nationalityChoice.equals("Hungary")) {
+
+                        } else if (nationalityChoice.equals("Uruguay")) {
+
+                        } else if (nationalityChoice.equals("Denmark")) {
+
+                        } else if (nationalityChoice.equals("France")) {
+
+                        } else if (nationalityChoice.equals("Netherlands")) {
+
+                        } else if (nationalityChoice.equals("Brazil")) {
+
+                        } else {
+                            System.out.println("No player on FC Barcelona is of this nationality.");
+                        }
+                    } else if (filterChoice.equals("Saves")) {
+                        
+                    } else if (filterChoice.equals("Assists")) {
+
+                    } else if (filterChoice.equals("Goals")) {
+
+                    } else if (filterChoice.equals("Shot Accuracy")) {
+
+                    } else if (filterChoice.equals("Save Accuracy")) {
+
+                    } else {
+                        System.out.println("Please enter a valid filter.");
                     }
                 } else if (userChoice == 5) {
                     break;
