@@ -48,7 +48,7 @@ public class Main {
                     } else if (filterChoice.equals("Shot Accuracy")) {
                         filterShotAccuracy();
                     } else if (filterChoice.equals("Save Accuracy")) {
-                        System.out.println("Test");
+                        filterSaveAccuracy();
                     } else {
                         System.out.println("Please enter a valid filter.");
                     }
@@ -228,6 +228,24 @@ public class Main {
             for (int i = 0; i < outfieldPlayers.size(); i++) {
                 OutfieldPlayer p = outfieldPlayers.get(i);
                 System.out.println(p);
+            }
+        } catch (IOException e) {
+            System.out.println("Error parsing CSV files.");
+        }
+    }
+
+    private static void filterSaveAccuracy() {
+        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+
+        try {
+            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+
+            System.out.println("PLAYER GOALS");
+            goalkeepers.sort(Comparator.comparingDouble(Goalkeeper::getSaveAccuracy).reversed());
+
+            for (int i = 0; i < goalkeepers.size(); i++) {
+                Goalkeeper g = goalkeepers.get(i);
+                System.out.println(g);
             }
         } catch (IOException e) {
             System.out.println("Error parsing CSV files.");
