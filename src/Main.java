@@ -8,11 +8,11 @@ public class Main {
         try {
             int userChoice = 0;
 
-            while (userChoice != 5) {
+            while (userChoice != 3) {
                 System.out.println("FC BARCELONA STATISTICS");
                 System.out.println("1. Team Summary");
                 System.out.println("2. Sort");
-                System.out.println("5. Exit");
+                System.out.println("3. Exit");
                 System.out.println("Enter your choice!:");
 
                 try {
@@ -25,34 +25,34 @@ public class Main {
                 if (userChoice == 1) {
                     displayTeamSummary();
                 } else if (userChoice == 2) {
-                    System.out.println("Pick a filter to choose from:");
-                    System.out.println("Position");
-                    System.out.println("Nationality");
-                    System.out.println("Saves");
-                    System.out.println("Assists");
-                    System.out.println("Goals");
-                    System.out.println("Shot Accuracy");
-                    System.out.println("Save Accuracy");
+                    System.out.println("Pick a filter to choose from (A, B, C, D, E, F, or G):");
+                    System.out.println("A. Position");
+                    System.out.println("B. Nationality");
+                    System.out.println("C. Saves");
+                    System.out.println("D. Assists");
+                    System.out.println("E. Goals");
+                    System.out.println("F. Shot Accuracy");
+                    System.out.println("G. Save Accuracy");
                     String filterChoice = inputReader.readLine();
 
-                    if (filterChoice.equals("Position")) {
+                    if (filterChoice.equalsIgnoreCase("A")) {
                         filterPosition(inputReader);
-                    } else if (filterChoice.equals("Nationality")) {
+                    } else if (filterChoice.equalsIgnoreCase("B")) {
                         filterNationality(inputReader);
-                    } else if (filterChoice.equals("Saves")) {
+                    } else if (filterChoice.equalsIgnoreCase("C")) {
                         filterSaves();
-                    } else if (filterChoice.equals("Assists")) {
+                    } else if (filterChoice.equalsIgnoreCase("D")) {
                         filterAssists();
-                    } else if (filterChoice.equals("Goals")) {
+                    } else if (filterChoice.equalsIgnoreCase("E")) {
                         filterGoals();
-                    } else if (filterChoice.equals("Shot Accuracy")) {
+                    } else if (filterChoice.equalsIgnoreCase("F")) {
                         filterShotAccuracy();
-                    } else if (filterChoice.equals("Save Accuracy")) {
+                    } else if (filterChoice.equalsIgnoreCase("G")) {
                         filterSaveAccuracy();
                     } else {
                         System.out.println("Please enter a valid filter.");
                     }
-                } else if (userChoice == 5) {
+                } else if (userChoice == 3) {
                     break;
                 } else {
                     System.out.println("Invalid input! Please select a number from the list.");
@@ -89,7 +89,7 @@ public class Main {
                 System.out.println("");
             }
         } catch (IOException e) {
-            System.out.println("Error parsing the CSVC files.");
+            System.out.println("Error parsing the CSV files.");
         }
     }
 
@@ -123,7 +123,7 @@ public class Main {
     }
 
     private static void filterNationality(BufferedReader inputReader) throws IOException {
-        System.out.println("Enter a nationality.");
+        System.out.println("Enter a nationality (Spain, Poland, USA, Hungary, Uruguay, Denmark, France, Netherlands, or Brazil).");
         String nationalityChoice = inputReader.readLine();
 
         String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
