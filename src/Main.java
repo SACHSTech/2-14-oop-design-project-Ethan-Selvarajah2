@@ -64,9 +64,17 @@ public class Main {
     }
 
     private static void displayTeamSummary() {
+        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+        String coachCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Coach.csv";
+
         try {
-            String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
-            String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+            Coach coach = CSVReader.readCoach(coachCSV);
+            System.out.println("------------------------------");
+            System.out.println("**COACH**");
+            System.out.println("------------------------------");
+            System.out.println(coach);
+            System.out.println("");
 
             List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
             List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
@@ -123,7 +131,8 @@ public class Main {
     }
 
     private static void filterNationality(BufferedReader inputReader) throws IOException {
-        System.out.println("Enter a nationality (Spain, Poland, USA, Hungary, Uruguay, Denmark, France, Netherlands, or Brazil).");
+        System.out.println(
+                "Enter a nationality (Spain, Poland, USA, Hungary, Uruguay, Denmark, France, Netherlands, or Brazil).");
         String nationalityChoice = inputReader.readLine();
 
         String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";

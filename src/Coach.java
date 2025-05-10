@@ -29,6 +29,6 @@ public class Coach extends Person {
     }
 
     public String toString() {
-        return "Name: " + getName() + " | Position: Coach | Age: " + getAge() + " | Height: " + getHeight() + " | " + getWeight() + " lbs | Nationality: " + getNationality() + " | Term: " + getTerm() + " | Success Rate: " + getSuccessRate();
+        return "Name: " + getName() + "\nPosition: Coach | Age: " + getAge() + " | Height: " + getHeight() + " | Weight: " + getWeight() + " lbs | Nationality: " + getNationality() + " | Term: " + getTerm() + " | Success Rate: " + getSuccessRate() + "%";
     }
 }

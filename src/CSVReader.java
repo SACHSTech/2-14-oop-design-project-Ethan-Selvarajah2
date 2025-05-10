@@ -28,6 +28,20 @@ public class CSVReader {
         return keepers;
     }
 
+    public static Coach readCoach(String filename) throws IOException {
+        try (BufferedReader br = new BufferedReader((new FileReader(filename)))) {
+            String line = br.readLine();
+            line = br.readLine();
+
+            if (line != null) {
+                String[] infoSplit = line.split(",");
+                Coach c = new Coach(infoSplit[0], skipBlank(infoSplit[1]), infoSplit[2], skipBlank(infoSplit[3]), infoSplit[4], Double.parseDouble(infoSplit[5]), infoSplit[6], skipBlank(infoSplit[7]), skipBlank(infoSplit[8]));
+                return c;
+            }
+        }
+        return null;
+    }
+
     private static int skipBlank(String value) {
         if (value.equals("---")) {
             return 0;
