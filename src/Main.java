@@ -44,7 +44,7 @@ public class Main {
                     } else if (filterChoice.equals("Assists")) {
                         filterAssists();
                     } else if (filterChoice.equals("Goals")) {
-                        System.out.println("Test");
+                        filterGoals();
                     } else if (filterChoice.equals("Shot Accuracy")) {
                         System.out.println("Test");
                     } else if (filterChoice.equals("Save Accuracy")) {
@@ -191,6 +191,24 @@ public class Main {
 
             for (int i = 0; i < allPlayers.size(); i++) {
                 Player p = allPlayers.get(i);
+                System.out.println(p);
+            }
+        } catch (IOException e) {
+            System.out.println("Error parsing CSV files.");
+        }
+    }
+
+    private static void filterGoals() {
+        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+
+        try {
+            List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
+
+            System.out.println("PLAYER GOALS");
+            outfieldPlayers.sort(Comparator.comparingInt(OutfieldPlayer::getGoals).reversed());
+
+            for (int i = 0; i < outfieldPlayers.size(); i++) {
+                OutfieldPlayer p = outfieldPlayers.get(i);
                 System.out.println(p);
             }
         } catch (IOException e) {
