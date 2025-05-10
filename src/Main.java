@@ -40,9 +40,9 @@ public class Main {
                     } else if (filterChoice.equals("Nationality")) {
                         filterNationality(inputReader);
                     } else if (filterChoice.equals("Saves")) {
-                        System.out.println("Test");
+                        filterSaves();
                     } else if (filterChoice.equals("Assists")) {
-                        System.out.println("Test");
+                        filterAssists();
                     } else if (filterChoice.equals("Goals")) {
                         System.out.println("Test");
                     } else if (filterChoice.equals("Shot Accuracy")) {
@@ -123,37 +123,76 @@ public class Main {
     }
 
     private static void filterNationality(BufferedReader inputReader) throws IOException {
-            System.out.println("Enter a nationality.");
-            String nationalityChoice = inputReader.readLine();
+        System.out.println("Enter a nationality.");
+        String nationalityChoice = inputReader.readLine();
 
-            String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
-            String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
 
-            boolean hasNationality = false;
+        boolean hasNationality = false;
 
-            try {
-                List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
-                List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+        try {
+            List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
+            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
 
-                for (int i = 0; i < outfieldPlayers.size(); i++) {
-                    OutfieldPlayer p = outfieldPlayers.get(i);
-                    if (p.getNationality().equals(nationalityChoice)) {
-                        System.out.println(p);
-                        hasNationality = true;
-                    }
+            for (int i = 0; i < outfieldPlayers.size(); i++) {
+                OutfieldPlayer p = outfieldPlayers.get(i);
+                if (p.getNationality().equals(nationalityChoice)) {
+                    System.out.println(p);
+                    hasNationality = true;
                 }
-    
-                for (int i = 0; i < goalkeepers.size(); i++) {
-                    Goalkeeper g = goalkeepers.get(i);
-                    if (g.getNationality().equals(nationalityChoice)) {
-                        System.out.println(g);
-                        hasNationality = true;
-                    }
+            }
+
+            for (int i = 0; i < goalkeepers.size(); i++) {
+                Goalkeeper g = goalkeepers.get(i);
+                if (g.getNationality().equals(nationalityChoice)) {
+                    System.out.println(g);
+                    hasNationality = true;
                 }
-    
-                if (!hasNationality) {
-                    System.out.println("No players have the nationality of " + nationalityChoice + ".");
-                }
+            }
+
+            if (!hasNationality) {
+                System.out.println("No players have the nationality of " + nationalityChoice + ".");
+            }
+        } catch (IOException e) {
+            System.out.println("Error parsing CSV files.");
+        }
+    }
+
+    private static void filterSaves() {
+        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+        try {
+            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+            goalkeepers.sort(Comparator.comparingInt(Goalkeeper::getSaves).reversed());
+
+            System.out.println("GOALKEEPER SAVES");
+            for (int i = 0; i < goalkeepers.size(); i++) {
+                Goalkeeper g = goalkeepers.get(i);
+                System.out.println(g);
+            }
+        } catch (IOException e) {
+            System.out.println("Error parsing CSV files.");
+        }
+    }
+
+    private static void filterAssists() {
+        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+
+        try {
+            List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
+            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+            List<Player> allPlayers = new ArrayList<>();
+            allPlayers.addAll(goalkeepers);
+            allPlayers.addAll(outfieldPlayers);
+
+            System.out.println("PLAYER ASSISTS");
+            allPlayers.sort(Comparator.comparingInt(Player::getAssists).reversed());
+
+            for (int i = 0; i < allPlayers.size(); i++) {
+                Player p = allPlayers.get(i);
+                System.out.println(p);
+            }
         } catch (IOException e) {
             System.out.println("Error parsing CSV files.");
         }
