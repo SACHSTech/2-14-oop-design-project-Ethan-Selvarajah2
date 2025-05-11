@@ -2,8 +2,8 @@
 # ICS4U OOP Design Project
 
 See instructions [here](INSTRUCTIONS.md) for details.
-
-*INSERT UML CLASS DIAGRAM HERE*  
+ 
+![UML Class Diagram](<src/2.14 OOP Design Project - FC Barcelona Statistics - UML Diagram.png>)
 
 ## Summary
-*Write a brief summary that describes the real-world system you are modelling in your design.*
+The system I'm modelling is representative of the FC Barcelona 2024-2025 season statistics. It allows users to view the performance of this soccer team and sort the data based on certain statistics.
