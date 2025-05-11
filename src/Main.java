@@ -76,6 +76,12 @@ public class Main {
         }
     }
 
+    /**
+     * Filters players based on their position
+     * 
+     * @param inputReader user input
+     * @throws IOException
+     */
     private static void filterPosition(BufferedReader inputReader) throws IOException {
         System.out.println("Select a player position: Goalkeeper, Defender, Forward, Midfield.");
         String positionChoice = inputReader.readLine();
@@ -105,6 +111,12 @@ public class Main {
         }
     }
 
+    /**
+     * Filters players based on their nationality
+     * 
+     * @param inputReader user input
+     * @throws IOException
+     */
     private static void filterNationality(BufferedReader inputReader) throws IOException {
         System.out.println(
                 "Enter a nationality (Spain, Poland, USA, Hungary, Uruguay, Denmark, France, Netherlands, or Brazil).");
@@ -143,6 +155,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ranks players based on their saves
+     */
     private static void filterSaves() {
         String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
         try {
@@ -159,6 +174,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ranks players based on their assists
+     */
     private static void filterAssists() {
         String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
         String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
@@ -182,6 +200,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ranks players based on their goals
+     */
     private static void filterGoals() {
         String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
 
@@ -200,6 +221,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ranks players based on their shot accuracy
+     */
     private static void filterShotAccuracy() {
         String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
 
@@ -218,6 +242,9 @@ public class Main {
         }
     }
 
+    /**
+     * Ranks players based on their save accuracy
+     */
     private static void filterSaveAccuracy() {
         String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
 
