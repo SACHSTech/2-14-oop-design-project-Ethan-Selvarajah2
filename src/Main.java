@@ -8,6 +8,19 @@ public class Main {
         try {
             int userChoice = 0;
 
+            String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
+            String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
+            String coachCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Coach.csv";
+
+            Coach coach = CSVReader.readCoach(coachCSV);
+            List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
+            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
+            List<Player> players = new ArrayList<>();
+            players.addAll(outfieldPlayers);
+            players.addAll(goalkeepers);
+
+            Team team = new Team("FC Barcelona", coach, players);
+
             while (userChoice != 3) {
                 System.out.println("FC BARCELONA STATISTICS");
                 System.out.println("1. Team Summary");
@@ -23,7 +36,7 @@ public class Main {
                 }
 
                 if (userChoice == 1) {
-                    displayTeamSummary();
+                    team.displayTeamSummary();
                 } else if (userChoice == 2) {
                     System.out.println("Pick a filter to choose from (A, B, C, D, E, F, or G):");
                     System.out.println("A. Position");
@@ -60,44 +73,6 @@ public class Main {
             }
         } catch (IOException e) {
             System.out.println("Error.");
-        }
-    }
-
-    private static void displayTeamSummary() {
-        String outfieldPlayersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Outfield_Players.csv";
-        String goalkeepersCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Goalkeepers.csv";
-        String coachCSV = "src/FC_Barcelona_2024-2025_Manual_Data_Entry-Coach.csv";
-
-        try {
-            Coach coach = CSVReader.readCoach(coachCSV);
-            System.out.println("------------------------------");
-            System.out.println("**COACH**");
-            System.out.println("------------------------------");
-            System.out.println(coach);
-            System.out.println("");
-
-            List<OutfieldPlayer> outfieldPlayers = CSVReader.readOutfieldPlayers(outfieldPlayersCSV);
-            List<Goalkeeper> goalkeepers = CSVReader.readGoalkeepers(goalkeepersCSV);
-
-            System.out.println("------------------------------");
-            System.out.println("**OUTFIELD PLAYERS**");
-            System.out.println("------------------------------");
-            for (int i = 0; i < outfieldPlayers.size(); i++) {
-                OutfieldPlayer p = outfieldPlayers.get(i);
-                System.out.println(p);
-                System.out.println("");
-            }
-
-            System.out.println("------------------------------");
-            System.out.println("**GOALKEEPERS**");
-            System.out.println("------------------------------");
-            for (int i = 0; i < goalkeepers.size(); i++) {
-                Goalkeeper g = goalkeepers.get(i);
-                System.out.println(g);
-                System.out.println("");
-            }
-        } catch (IOException e) {
-            System.out.println("Error parsing the CSV files.");
         }
     }
 
